@@ -1,7 +1,10 @@
 import React from 'react';
+import { Link } from 'react-router';
 
 const DocList = ({ doc }) => {
-    const { availability, experience, name, education, registrationNumber, doctorImage } = doc;
+    const { id, availability, experience, name, education, registrationNumber, doctorImage } = doc;
+    const today = new Date().toLocaleDateString('en-US', { weekday: 'long' });
+    const isAvailableToday = Array.isArray(availability) && availability.includes(today);
 
 
     return (
@@ -11,7 +14,11 @@ const DocList = ({ doc }) => {
             </div>
             <div>
                 <div className='flex gap-4 items-center'>
-                    <p className='text-[11px] md:text-[14px] font-primary font-medium py-1.75 px-3.5 text-green-700 rounded-full bg-[rgba(9,152,47,0.1)] border'>Available</p>
+                    <p
+                        className={`text-[11px] md:text-[14px] font-primary font-medium py-1.75 px-3.5 rounded-full border ${isAvailableToday ? 'text-green-700 bg-[rgba(9,152,47,0.1)]' : 'text-red-700 bg-[rgba(229,23,23,0.1)]'}`}
+                    >
+                        {isAvailableToday ? 'Available' : 'Unavailable'}
+                    </p>
                     <p className='text-[11px] md:text-[14px] font-primary font-medium py-1.75 px-3.5 text-blue-700 rounded-full bg-[rgba(23,106,229,0.1)] border'>{experience}+ Experience</p>
                 </div>
                 <div>
@@ -22,12 +29,14 @@ const DocList = ({ doc }) => {
                 </div>
             </div>
             <div>
-                <button
-                    type="button"
-                    className="w-full btn pt-1 pb-1 rounded-4xl font-primary font-bold text-[15px] md:text-[20px] text-blue-800 border border-blue-800 active:bg-blue-800 active:text-white active:border-blue-800"
-                >
-                    View Details
-                </button>
+                <Link to={`/docDetail/${id}`}>
+                    <button
+                        type="button"
+                        className="w-full btn pt-1 pb-1 rounded-4xl font-primary font-bold text-[15px] md:text-[20px] text-blue-800 border border-blue-800 active:bg-blue-800 active:text-white active:border-blue-800"
+                    >
+                        View Details
+                    </button>
+                </Link>
             </div>
         </div>
     );

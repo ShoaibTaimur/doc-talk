@@ -7,6 +7,7 @@ import Home from './Components/Home/Home'
 import MyBookings from './Components/MyBookings/MyBookings'
 import Blogs from './Components/Blogs/Blogs'
 import Contact from './Components/Contact/Contact'
+import DocDetail from './Components/Doclist/DocDetail'
 
 const router = createBrowserRouter([
   {
@@ -30,6 +31,11 @@ const router = createBrowserRouter([
       {
         path:'/contact-us',
         Component: Contact
+      },
+      {
+        path:'/docDetail/:id',
+        loader:()=>fetch("docInfo.json"),
+        Component:DocDetail
       }
     ]
   },
