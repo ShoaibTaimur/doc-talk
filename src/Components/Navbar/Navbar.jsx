@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router';
 
 const Navbar = () => {
     return (
@@ -11,10 +12,10 @@ const Navbar = () => {
                     <ul
                         tabIndex="-1"
                         className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
-                        <li className='font-primary font-medium opacity-60'><button>Home</button></li>
-                        <li className='font-primary font-medium opacity-60'><button>My-Bookings</button></li>
-                        <li className='font-primary font-medium opacity-60'><button>Blogs</button></li>
-                        <li className='font-primary font-medium opacity-60'><button>Contact Us</button></li>
+                        <li className='font-primary font-medium opacity-60'><Link to="/"><button>Home</button></Link></li>
+                        <li className='font-primary font-medium opacity-60'><Link to='/my-bookings'><button>My-Bookings</button></Link></li>
+                        <li className='font-primary font-medium opacity-60'><Link to='/blogs'><button>Blogs</button></Link></li>
+                        <li className='font-primary font-medium opacity-60'><Link to='/contact-us'><button>Contact Us</button></Link></li>
                     </ul>
                 </div>
                 <div className='flex gap-2 items-center'>
@@ -24,14 +25,14 @@ const Navbar = () => {
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal px-1">
-                    <li className='font-primary font-medium opacity-60'><button>Home</button></li>
-                    <li className='font-primary font-medium opacity-60'><button>My-Bookings</button></li>
-                    <li className='font-primary font-medium opacity-60'><button>Blogs</button></li>
-                    <li className='font-primary font-medium opacity-60'><button>Contact Us</button></li>
+                    <li className='font-primary font-medium opacity-60'><Link to="/"><button>Home</button></Link></li>
+                    <li className='font-primary font-medium opacity-60'><Link to='/my-bookings'><button>My-Bookings</button></Link></li>
+                    <li className='font-primary font-medium opacity-60'><Link to='/blogs'><button>Blogs</button></Link></li>
+                    <li className='font-primary font-medium opacity-60'><Link to='/contact-us'><button>Contact Us</button></Link></li>
                 </ul>
             </div>
             <div className="navbar-end">
-                <button className="btn border-none bg-[#176AE5] text-white rounded-4xl font-primary font-bold">Emergency</button>
+                <Link to='/contact-us'><button className="btn border-none bg-[#176AE5] text-white rounded-4xl font-primary font-bold">Emergency</button></Link>
             </div>
         </div>
     );
