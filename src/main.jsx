@@ -16,6 +16,7 @@ const router = createBrowserRouter([
       {
         index: true,
         path: '/',
+        loader:()=>fetch("docInfo.json"),
         Component: Home
       },
       {

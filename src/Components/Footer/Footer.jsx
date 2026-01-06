@@ -4,7 +4,7 @@ import { Link } from 'react-router';
 
 const Footer = () => {
     return (
-        <div className='sm:px-20 py-17.5'>
+        <div className='sm:px-20 py-17.5 bg-white'>
             <div className='flex items-center justify-center gap-2'>
                 <img className='h-8' src="logo.png" alt="" />
                 <h1 className='font-primary font-extrabold text-[20px]'>DocTalk</h1>
