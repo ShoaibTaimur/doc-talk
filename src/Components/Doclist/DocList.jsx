@@ -18,7 +18,7 @@ const DocList = ({ doc }) => {
                     <h1 className='font-primary font-extrabold text-[20px] md:text-[24px]'>{name}</h1>
                     <p className='font-primary text-[12px] md:text-[15px] font-medium opacity-60'>{education}</p>
                     <div className='border m-3 border-dashed border-[rgba(15,15,15,0.2)]'></div>
-                    <p className='font-primary font-medium opacity-60'>{registrationNumber}</p>
+                    <p className='font-primary font-medium opacity-60'>{`\u00AE ${registrationNumber}`}</p>
                 </div>
             </div>
             <div>
