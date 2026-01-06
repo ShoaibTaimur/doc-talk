@@ -6,6 +6,8 @@ const DocDetail = () => {
     const docList = useLoaderData();
     const docInfo = docList.find((doc) => doc.id === parseInt(id));
     const { name, doctorImage, education, speciality, workPlace, registrationNumber, availability, fee } = docInfo;
+    const today = new Date().toLocaleDateString('en-US', { weekday: 'long' });
+    const isAvailableToday = Array.isArray(availability) && availability.includes(today);
     return (
         <div className='my-5 mx-13 lg:mx-22.5 flex flex-col gap-5'>
             <div className='bg-white rounded-3xl py-12.5 px-4 sm:px-25 flex flex-col gap-3 items-center'>
@@ -38,7 +40,25 @@ const DocDetail = () => {
                     </div>
                 </div>
             </div>
-            <div></div>
+            <div className='bg-white rounded-3xl py-12.5 px-4 sm:px-25 space-y-5'>
+                <div className='flex justify-between items-center'>
+                    <p>Availablity: </p>
+                    <p
+                        className={`text-[11px] md:text-[14px] font-primary font-medium py-1.75 px-3.5 rounded-full border ${isAvailableToday ? 'text-green-700 bg-[rgba(9,152,47,0.1)]' : 'text-red-700 bg-[rgba(229,23,23,0.1)]'}`}
+                    >
+                        {isAvailableToday ? 'Available' : 'Unavailable'}
+                    </p>
+                </div>
+                <div className='flex justify-center'>
+                    <button
+                        type="button"
+                        disabled={!isAvailableToday}
+                        className={`btn border-none w-full rounded-4xl font-primary font-bold ${isAvailableToday ? 'bg-[#176AE5] text-white' : 'bg-gray-300 text-gray-500 cursor-not-allowed'}`}
+                    >
+                        Book an Appointment
+                    </button>
+                </div>
+            </div>
         </div>
     );
 };
