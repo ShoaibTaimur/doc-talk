@@ -18,10 +18,12 @@ const Navbar = () => {
                         <li className='font-primary font-medium opacity-60'><Link to='/contact-us'><button>Contact Us</button></Link></li>
                     </ul>
                 </div>
-                <div className='flex gap-2 items-center'>
-                    <img className='h-8' src="logo.png" alt="" />
-                    <p className='font-primary font-extrabold text-[20px]'>DocTalk</p>
-                </div>
+                <Link to='/'>
+                    <div className='flex gap-2 items-center'>
+                        <img className='h-8' src="logo.png" alt="" />
+                        <p className='font-primary font-extrabold text-[20px]'>DocTalk</p>
+                    </div>
+                </Link>
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal px-1">
