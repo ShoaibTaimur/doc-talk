@@ -24,7 +24,7 @@ const DocList = ({ doc }) => {
             <div>
                 <button
                     type="button"
-                    className="w-full btn pt-1 pb-1 rounded-4xl font-primary font-bold text-[20px] text-blue-800 border border-blue-800 active:bg-blue-800 active:text-white active:border-blue-800"
+                    className="w-full btn pt-1 pb-1 rounded-4xl font-primary font-bold text-[15px] md:text-[20px] text-blue-800 border border-blue-800 active:bg-blue-800 active:text-white active:border-blue-800"
                 >
                     View Details
                 </button>
