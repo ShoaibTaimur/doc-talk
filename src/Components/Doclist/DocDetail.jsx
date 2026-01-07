@@ -1,13 +1,16 @@
-import React from 'react';
-import { useLoaderData, useParams } from 'react-router';
+import React, { useContext } from 'react';
+import { Link, useLoaderData, useParams } from 'react-router';
+import { BookingContext } from '../../App';
 
 const DocDetail = () => {
+    const { handleBooking } = useContext(BookingContext);
     const { id } = useParams();
     const docList = useLoaderData();
     const docInfo = docList.find((doc) => doc.id === parseInt(id));
     const { name, doctorImage, education, speciality, workPlace, registrationNumber, availability, fee } = docInfo;
     const today = new Date().toLocaleDateString('en-US', { weekday: 'long' });
     const isAvailableToday = Array.isArray(availability) && availability.includes(today);
+
     return (
         <div className='my-5 mx-13 lg:mx-22.5 flex flex-col gap-5'>
             <div className='bg-white rounded-3xl py-12.5 px-4 sm:px-25 flex flex-col gap-3 items-center'>
@@ -32,7 +35,7 @@ const DocDetail = () => {
                             <h1 className='font-primary font-bold text-[16px]'>Available: </h1>
                             <div className='flex gap-4'>
                                 {
-                                    availability.map(day => <p className='text-[11px] md:text-[14px] font-primary font-medium py-1.75 px-3.5 text-orange-500 rounded-full bg-orange-100 border'>{day}</p>)
+                                    availability.map((day, i) => <p key={i} className='text-[11px] md:text-[14px] font-primary font-medium py-1.75 px-3.5 text-orange-500 rounded-full bg-orange-100 border'>{day}</p>)
                                 }
                             </div>
                         </div>
@@ -50,12 +53,14 @@ const DocDetail = () => {
                     </p>
                 </div>
                 <div className='flex justify-center'>
-                    <button
+                    <button onClick={() => handleBooking(id)}
                         type="button"
                         disabled={!isAvailableToday}
                         className={`btn border-none w-full rounded-4xl font-primary font-bold ${isAvailableToday ? 'bg-[#176AE5] text-white' : 'bg-gray-300 text-gray-500 cursor-not-allowed'}`}
                     >
-                        Book an Appointment
+                        <Link to="/my-bookings">
+                            Book an Appointment
+                        </Link>
                     </button>
                 </div>
             </div>

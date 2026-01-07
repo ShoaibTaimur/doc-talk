@@ -22,6 +22,7 @@ const router = createBrowserRouter([
       },
       {
         path:'/my-bookings',
+        loader:()=>fetch("docInfo.json"),
         Component: MyBookings
       },
       {

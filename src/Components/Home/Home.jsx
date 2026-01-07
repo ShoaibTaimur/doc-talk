@@ -1,4 +1,3 @@
-import React from 'react';
 import Banner from '../Banner/Banner';
 import { useLoaderData } from 'react-router';
 import DocContainer from '../Doclist/DocContainer';
