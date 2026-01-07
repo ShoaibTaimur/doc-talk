@@ -1,6 +1,6 @@
+import DocList from "@/Components/Doclist/DocList";
+import NotFound from "@/Components/Utilities/NotFound";
 import React, { Suspense } from "react";
-import NotFound from "../Utilities/NotFound";
-import DocList from "./DocList";
 
 const DocContainer = ({ docInfoData }) => {
   return (

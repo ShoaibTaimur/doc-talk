@@ -1,7 +1,7 @@
+import NotFound from "@/Components/Utilities/NotFound";
+import { BookingContext } from "@/context/BookingContext";
 import React, { useContext } from "react";
 import { Link, useLoaderData, useParams } from "react-router";
-import { BookingContext } from "../../context/BookingContext";
-import NotFound from "../Utilities/NotFound";
 
 const DocDetail = () => {
   const { handleBooking } = useContext(BookingContext);
@@ -115,9 +115,9 @@ const DocDetail = () => {
           </p>
         </div>
         <div className="flex justify-center">
-          <button
+          <Link
+            to="/my-bookings"
             onClick={() => handleBooking(id)}
-            type="button"
             disabled={!isAvailableToday}
             className={`btn border-none w-full rounded-4xl font-primary font-bold ${
               isAvailableToday
@@ -125,8 +125,8 @@ const DocDetail = () => {
                 : "bg-gray-300 text-gray-500 cursor-not-allowed"
             }`}
           >
-            <Link to="/my-bookings">Book an Appointment</Link>
-          </button>
+            Book an Appointment
+          </Link>
         </div>
       </div>
     </div>

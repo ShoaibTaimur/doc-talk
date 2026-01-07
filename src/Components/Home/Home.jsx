@@ -1,7 +1,7 @@
+import Banner from "@/Components/Banner/Banner";
+import DocContainer from "@/Components/Doclist/DocContainer";
+import Services from "@/Components/Services/Services";
 import { useLoaderData } from "react-router";
-import Banner from "../Banner/Banner";
-import DocContainer from "../Doclist/DocContainer";
-import Services from "../Services/Services";
 
 const Home = () => {
   const docInfoData = useLoaderData();

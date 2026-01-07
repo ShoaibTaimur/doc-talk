@@ -1,13 +1,13 @@
+import App from "@/App";
+import Blogs from "@/Components/Blogs/Blogs";
+import Contact from "@/Components/Contact/Contact";
+import DocDetail from "@/Components/Doclist/DocDetail";
+import Home from "@/Components/Home/Home";
+import MyBookings from "@/Components/MyBookings/MyBookings";
+import "@/index.css";
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router";
-import App from "./App";
-import Blogs from "./Components/Blogs/Blogs";
-import Contact from "./Components/Contact/Contact";
-import DocDetail from "./Components/Doclist/DocDetail";
-import Home from "./Components/Home/Home";
-import MyBookings from "./Components/MyBookings/MyBookings";
-import "./index.css";
 
 const router = createBrowserRouter([
   {
