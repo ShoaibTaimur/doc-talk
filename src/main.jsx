@@ -1,49 +1,61 @@
-import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
-import { createBrowserRouter, RouterProvider } from 'react-router'
-import './index.css'
-import App from './App'
-import Home from './Components/Home/Home'
-import MyBookings from './Components/MyBookings/MyBookings'
-import Blogs from './Components/Blogs/Blogs'
-import Contact from './Components/Contact/Contact'
-import DocDetail from './Components/Doclist/DocDetail'
+import { StrictMode } from "react";
+import { createRoot } from "react-dom/client";
+import { createBrowserRouter, RouterProvider } from "react-router";
+import App from "./App";
+import Blogs from "./Components/Blogs/Blogs";
+import Contact from "./Components/Contact/Contact";
+import DocDetail from "./Components/Doclist/DocDetail";
+import Home from "./Components/Home/Home";
+import MyBookings from "./Components/MyBookings/MyBookings";
+import "./index.css";
 
 const router = createBrowserRouter([
   {
-    path: '/',
+    path: "/",
     Component: App,
     children: [
       {
         index: true,
-        path: '/',
-        loader:()=>fetch("docInfo.json"),
-        Component: Home
+        path: "/",
+        loader: async () => {
+          const response = await fetch("/docInfo.json");
+          const data = await response.json();
+          return data;
+        },
+        Component: Home,
       },
       {
-        path:'/my-bookings',
-        loader:()=>fetch("docInfo.json"),
-        Component: MyBookings
+        path: "/my-bookings",
+        loader: async () => {
+          const response = await fetch("/docInfo.json");
+          const data = await response.json();
+          return data;
+        },
+        Component: MyBookings,
       },
       {
-        path:'/blogs',
-        Component: Blogs
+        path: "/blogs",
+        Component: Blogs,
       },
       {
-        path:'/contact-us',
-        Component: Contact
+        path: "/contact-us",
+        Component: Contact,
       },
       {
-        path:'/docDetail/:id',
-        loader:()=>fetch("docInfo.json"),
-        Component:DocDetail
-      }
-    ]
+        path: "/docDetail/:id",
+        loader: async () => {
+          const response = await fetch("/docInfo.json");
+          const data = await response.json();
+          return data;
+        },
+        Component: DocDetail,
+      },
+    ],
   },
-])
+]);
 
-createRoot(document.getElementById('root')).render(
+createRoot(document.getElementById("root")).render(
   <StrictMode>
     <RouterProvider router={router} />
-  </StrictMode>
-)
+  </StrictMode>,
+);

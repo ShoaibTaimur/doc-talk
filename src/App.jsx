@@ -1,12 +1,9 @@
-import { Outlet } from 'react-router'
-import './App.css'
-import Navbar from './Components/Navbar/Navbar'
-import Footer from './Components/Footer/Footer'
-import { createContext, Suspense } from 'react'
-import React, { useState } from 'react';
-
-export const BookingContext = createContext("");
-
+import React, { Suspense, useState } from "react";
+import { Outlet } from "react-router";
+import "./App.css";
+import Footer from "./Components/Footer/Footer";
+import Navbar from "./Components/Navbar/Navbar";
+import { BookingContext } from "./context/BookingContext";
 
 function App() {
   const [bookings, setBookings] = useState([]);
@@ -16,8 +13,7 @@ function App() {
     for (let booking of bookings) {
       if (booking === id) {
         flag = 1;
-      }
-      else {
+      } else {
         flag = 0;
       }
     }
@@ -25,19 +21,23 @@ function App() {
       const newBooking = [...bookings, id];
       setBookings(newBooking);
     }
-  }
+  };
 
   return (
-    <>
-      <Suspense fallback={<span className="loading loading-infinity loading-xl"></span>}>
-        <Navbar></Navbar>
+    <Suspense
+      fallback={<span className="loading loading-infinity loading-xl"></span>}
+    >
+      <div className="min-h-screen flex flex-col">
+        <Navbar />
         <BookingContext.Provider value={{ bookings, handleBooking }}>
-          <Outlet></Outlet>
+          <div className="flex-1">
+            <Outlet />
+          </div>
         </BookingContext.Provider>
-        <Footer></Footer>
-      </Suspense>
-    </>
-  )
+        <Footer />
+      </div>
+    </Suspense>
+  );
 }
 
-export default App
+export default App;
