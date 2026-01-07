@@ -8,6 +8,11 @@ import { BookingContext } from "./context/BookingContext";
 function App() {
   const [bookings, setBookings] = useState([]);
 
+  const removeBooking = (id) => {
+    const newArr=bookings.filter(booking=>Number(booking)!==id);
+    setBookings(newArr);
+  };
+
   const handleBooking = (id) => {
     let flag = 0;
     for (let booking of bookings) {
@@ -25,11 +30,11 @@ function App() {
 
   return (
     <Suspense
-      fallback={<span className="loading loading-infinity loading-xl"></span>}
+      fallback={<div className="loading loading-infinity loading-xl" />}
     >
       <div className="min-h-screen flex flex-col">
         <Navbar />
-        <BookingContext.Provider value={{ bookings, handleBooking }}>
+        <BookingContext.Provider value={{ bookings, handleBooking, removeBooking }}>
           <div className="flex-1">
             <Outlet />
           </div>

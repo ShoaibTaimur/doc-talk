@@ -6,7 +6,7 @@ import { Link, useLoaderData, useParams } from "react-router";
 const DocDetail = () => {
   const { handleBooking } = useContext(BookingContext);
   const { id } = useParams();
-  const docList = useLoaderData() ?? [];
+  const docList = useLoaderData();
 
   if (!Array.isArray(docList)) {
     return (

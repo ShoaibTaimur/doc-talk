@@ -17,10 +17,10 @@ const DocContainer = ({ docInfoData }) => {
       <Suspense
         fallback={<span className="loading loading-infinity loading-xl"></span>}
       >
-        {Array.isArray(docInfoData) && docInfoData.length > 0 ? (
+        {docInfoData.length > 0 ? (
           <div className="grid sm:grid-cols-2 xl:grid-cols-3 gap-8">
-            {docInfoData?.map((doc) => (
-              <DocList key={doc?.id} doc={doc} />
+            {docInfoData.map((doc) => (
+              <DocList key={doc.id} doc={doc} />
             ))}
           </div>
         ) : (

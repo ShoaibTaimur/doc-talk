@@ -11,9 +11,11 @@ const Footer = () => {
       <div className="flex justify-center">
         <ul className="menu menu-horizontal px-1">
           <li className="font-primary font-medium opacity-60">
-            <button type="button" onClick={() => window.location.assign("/")}>
-              Home
-            </button>
+            <Link to='/'>
+              <button>
+                Home
+              </button>
+            </Link>
           </li>
           <li className="font-primary font-medium opacity-60">
             <Link to="/my-bookings">

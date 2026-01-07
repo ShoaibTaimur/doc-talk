@@ -3,26 +3,29 @@ import NotFound from "@/Components/Utilities/NotFound";
 import { BookingContext } from "@/context/BookingContext";
 import React, { useContext } from "react";
 import { useLoaderData } from "react-router";
+import { BookingContext } from "../../context/BookingContext";
+import NotFound from "../Utilities/NotFound";
+import Booking from "./Booking";
+import Charts from "../Charts/Charts";
 
 const MyBookings = () => {
   const docInfo = useLoaderData() ?? [];
   const { bookings } = useContext(BookingContext);
 
-  const bookingIds = (bookings ?? []).map((booking) => Number(booking));
-  const bookedDocs = Array.isArray(docInfo)
-    ? docInfo.filter((doc) => bookingIds.includes(doc?.id))
-    : [];
+  const bookingIds = bookings.map((booking) => Number(booking));
+  const bookedDocs = docInfo.filter((doc) => bookingIds.includes(doc.id));
 
   return (
-    <div>
-      <h1 className="font-primary font-extrabold text-[30px]">
+    <div className="space-y-4 mt-4 mb-10">
+      <Charts bookedDocs={bookedDocs} />
+      <h1 className="text-center font-primary font-extrabold text-[20px] md:text-[30px]">
         My Today Appointments
       </h1>
-      <p className="font-primary opacity-60">
+      <p className="text-center text-[15px] md:text-[25px] font-primary opacity-60">
         Our platform connects you with verified, experienced doctors across
         various specialties — all at your convenience.
       </p>
-      <div>
+      <div className="space-y-5">
         {bookedDocs?.length > 0 ? (
           bookedDocs?.map((doc) => <Booking key={doc?.id} doc={doc} />)
         ) : (
