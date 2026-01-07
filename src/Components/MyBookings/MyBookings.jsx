@@ -3,9 +3,6 @@ import NotFound from "@/Components/Utilities/NotFound";
 import { BookingContext } from "@/context/BookingContext";
 import React, { useContext } from "react";
 import { useLoaderData } from "react-router";
-import { BookingContext } from "../../context/BookingContext";
-import NotFound from "../Utilities/NotFound";
-import Booking from "./Booking";
 import Charts from "../Charts/Charts";
 
 const MyBookings = () => {
